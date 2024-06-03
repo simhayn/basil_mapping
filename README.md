@@ -23,7 +23,7 @@ This project was conducted as part of my master's thesis at Bar Ilan University.
 - **Department**: Ecology
 - **Advisor**: Professor Yigal Cohen
 - **Year**: 2021
-- **Traits Studied**: Pathogen resistance, red color intensity
+- **Traits Studied**: Downy Mildew and Fusarium Resistance, Red Color Intensity on Leaves, Stems, and Flowers in Greenhouse or Field Environments
 
 ## Installation
 To get started with the analysis, you'll need to install the necessary R packages. Make sure you have R and RStudio installed on your system.
