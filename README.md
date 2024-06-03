@@ -30,8 +30,8 @@ To get started with the analysis, you'll need to install the necessary R package
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/basil-genetic-mapping.git
-    cd basil-genetic-mapping
+    git clone https://github.com/simhayn/basil_mapping.git
+    cd basil_mapping
     ```
 
 2. **Install required R packages:**
