@@ -11,10 +11,9 @@
 #### Setting up ####
 #clean up R workspace
 rm(list = ls())
-#setwd("~/mydata/denovo basil")
-#load("~/mydata/denovo basil/.RData")
-setwd("C:/Users/Public/R nataly/denovo")
-load("C:/Users/Public/R nataly/denovo/denovo.Rdata")
+
+setwd("C:/Users/Public/R nataly")
+#load("C:/Users/Public/R nataly/denovo.Rdata")
 
 
 #load packages
