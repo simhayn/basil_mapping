@@ -86,3 +86,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or inquiries, please contact Nataly Yakobov at [natali388@gmail.com](mailto:natali388@gmail.com).
 
 Thank you for your interest in the Basil Genetic Mapping and QTL Analysis project!
+"# Basil-Genetics" 
