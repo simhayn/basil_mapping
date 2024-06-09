@@ -137,7 +137,8 @@ cat(nind(data5),"individuals are used to cluster markers\n\n\n")
   cat(totmar(data9)-totmar(data10),"mar omitted for LG < 2 mar\n\n\n")
 }
 #rename chr by numerical order
-{x<-1:nchr(data10)
+{
+  x<-1:nchr(data10)
   for (i in x) {
     names(data10$geno)[i]<-paste0("LG",i)
   }
@@ -167,5 +168,5 @@ if(ask("Press <RETURN> to plot LOD over rf to tiff file, it takes a long time")=
   dev.off()
 }
 #save map as csv file 
-cat("\nsaving cross to csv file\n")
-write.cross(data,"csv")
+cat("\nsaving cross 'data10' to csv file\n")
+write.cross(data10,"csv")
