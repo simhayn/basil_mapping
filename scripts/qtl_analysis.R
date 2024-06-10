@@ -119,12 +119,29 @@ if(ask("Press <RETURN> to plot correlation matrices")==""){
   rm("mat")
 }
 
+#### genome scans ####
 # Check if the precomputed genome scans file exists
-if (file.exists("genome_scans.Rdata")) {
+if (all(file.exists("genome_scans.Rdata","scan2_part1.Rdata","scan2_lod_part2.Rdata"))) {
   message("Loading precomputed genome scans from genome_scans.Rdata to save time.")
   load("genome_scans.Rdata")
+  # Load the parts (scan2 is a large file so i split it to 2 parts)
+  load("scan2_part1.Rdata")
+  load("scan2_lod_part2.Rdata")
+  lod_part1<-scan2.partial$lod
+  # Combine the 'lod' matrix parts back into a single matrix
+  combined_lod <- array(NA, dim = c(dim(lod_part1)[1] + dim(lod_part2)[1], dim(lod_part1)[2], dim(lod_part1)[3]))
+  # Copy the data from the parts into the combined array
+  combined_lod[1:dim(lod_part1)[1], , ] <- lod_part1
+  combined_lod[(dim(lod_part1)[1] + 1):dim(combined_lod)[1], , ] <- lod_part2
+  # Set the dimnames attribute correctly
+  dimnames(combined_lod) <- dimnames(scan2.partial$lod)
+  # Reconstruct the scantwo object
+  scan2 <- scan2.partial  # Copy the original object structure
+  scan2$lod <- combined_lod  # Replace the 'lod' part with the combined matrix
+  # cleanup
+  rm(list=c("scan2.partial","combined_lod","lod_part1","lod_part2"))
 } else {
-  if(ask("The precomputed genome scans were not found. Run genome scans now? press <RETURN> to continue")==""){
+  if(ask("The precomputed genome scans were not found. you may want to check for the files. or Run genome scans now? this takes long! press <RETURN> to continue")==""){
     message("Performing genome scans... This may take a long time.")
     
     ###ScanOne###
