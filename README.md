@@ -28,26 +28,11 @@ This project was conducted as part of my master's thesis at Bar Ilan University.
 ## Installation
 To get started with the analysis, you'll need to install the necessary R packages. Make sure you have R and RStudio installed on your system.
 
-1. **Clone the repository:**
+**Clone the repository:**
     ```bash
     git clone https://github.com/simhayn/basil_mapping.git
     cd basil_mapping
     ```
-
-2. **Install required R packages:**
-    Open R or RStudio and run the following commands:
-    ```r
-    install.packages(c("qtl", "ASMap", "dplyr","GGally"))
-    ```
-
-3. **Load the packages:**
-    ```r
-    library(qtl)
-    library(ASMap)
-    library(dplyr)
-    library(GGally)
-    ```
-
 ## Usage
 The repository includes separate scripts for genetic mapping and QTL analysis. Here are the main steps:
 
