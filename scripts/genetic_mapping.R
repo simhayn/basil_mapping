@@ -142,7 +142,7 @@ cat(nind(data5),"individuals are used to cluster markers\n\n\n")
   for (i in x) {
     names(data10$geno)[i]<-paste0("LG",i)
   }
-  tiff("plotMap.tiff",800,550)
+  tiff(file="results/plotMap.tiff",800,550)
   par(cex=1.1,cex.lab=1.4,cex.main=2)
   plot.map(data10,alternate.chrid=T)
   dev.off()
