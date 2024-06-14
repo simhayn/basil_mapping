@@ -21,12 +21,8 @@ This project was conducted as part of my master's thesis at Bar Ilan University.
 - **Student**: Nataly Yakobov
 - **University**: Bar Ilan University
 - **Department**: Ecology
-- **Advisor**: Professor Yigal Cohen
 - **Year**: 2021
 - **Traits Studied**: Downy Mildew and Fusarium resistance, Cold tolerance, Anthocyanin accumulation (Red Color Intensity) on Leaves, Stems and Flowers, in Young and mature plants in Greenhouse or Field environments. 
-
-## Installation
-To get started with the analysis, you'll need to install the necessary R packages. Make sure you have R and RStudio installed on your system.
 
 **Clone the repository:**
     ```bash
