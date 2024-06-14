@@ -24,6 +24,7 @@ This project was conducted as part of my master's thesis at Bar Ilan University.
 - **Year**: 2021
 - **Traits Studied**: Downy Mildew and Fusarium resistance, Cold tolerance, Anthocyanin accumulation (Red Color Intensity) on Leaves, Stems and Flowers, in Young and mature plants in Greenhouse or Field environments. 
 
+## Installation
 **Clone the repository:**
     ```bash
     git clone https://github.com/simhayn/basil_mapping.git
