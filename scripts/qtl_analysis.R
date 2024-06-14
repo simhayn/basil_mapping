@@ -1,8 +1,6 @@
 #*****************************
 #Analyze QTL data of basil
-#(BA17 Bc5F3 44-4-3 x Deep Purple)F2 population 
-#SNP's from Lara
-#GBS sequenced by Genewiz
+#F2 population 
 #Nataly Yakobov
 #*****************************
 ####       R=0       S=1      for FOB BDM 
@@ -47,7 +45,7 @@ data<-read.cross("csv",".","data.csv",map.function="kosambi",genotypes = c("A","
 #phenotypic distribution
 # histograms or barplots
 if(ask("Press <RETURN> to plot phenotipic distribution to tiff file")==""){
-  tiff("phenoDistrib%d.tiff", 700, 650)
+  tiff("results/phenoDistrib%d.tiff", 700, 650)
   par(mfrow = c(2, 3), cex = 1.3)
   l <- 1
   
@@ -261,7 +259,7 @@ plot.sc<-function (x,bin=F,sc=scan1,thresh=thresh1.hk,LETTERs=T,l=1,mf=c(2,2),se
   if (first==F) par(mfrow=c(1,1))
 }
 if(t<-(ask("Press <RETURN> to plot single qtls to tiff files")=="")){
-  tiff("singleQTL%d.tiff",1100,700,res=96)
+  tiff("results/singleQTL%d.tiff",1100,700,res=96)
 }
 {
   plot.sc(1:6)
@@ -292,17 +290,17 @@ plotAddqtl<-function(x,bin=F,list=qtlist,aq=out.aq,thresh=thresh1.hk,mfrow=c(2,2
   }
 }
 if(ask("Press <RETURN> to plot added qtls to tiff files")==""){
-  tiff("addqtl.ant.tiff")
+  tiff("results/addqtl.ant.tiff")
   plotAddqtl(1:6,mfrow=c(2,3))
   dev.off()
-  tiff("addqtl.fus.tiff")
+  tiff("results/addqtl.fus.tiff")
   plotAddqtl(7:10)
   plotAddqtl(1,T,qtlist.bin,out.aq.bin,thresh2.em,second=T,l=4)
   dev.off()
-  tiff("addqtl.FOB3_bin.tiff",850,550)
+  tiff("results/addqtl.FOB3_bin.tiff",850,550)
   plotAddqtl(1,T,qtlist.bin,out.aq.bin,thresh2.em,l=6)
   dev.off()
-  tiff("addqtl.BDM.tiff")
+  tiff("results/addqtl.BDM.tiff")
   plotAddqtl(2,T,qtlist.bin,out.aq.bin,thresh2.em,LETTERs=F)
   dev.off()
 }
@@ -411,7 +409,7 @@ if(ask("Press <RETURN> to plot added qtls to tiff files")==""){
 }
 qtldf.aq_me<-qtldf.aq
 if(ask("Press <RETURN> to save qtl data to csv file")==""){
-  write.csv(qtldf.aq,file="qtldf.aq.csv")
+  write.csv(qtldf.aq,file="results/qtldf.aq.csv")
 }
 
 ####Effectplot####
@@ -419,7 +417,7 @@ if(ask("Press <RETURN> to save qtl data to csv file")==""){
 data<-sim.geno(data,n.draws=128,step=2,map.function="kosambi")
 #get the  qtl maximum pick for a threshold in pheno i
 if(ask("Press <RETURN> to plot effectplot to tiff file")==""){
-  tiff(filename="effectPlot.tiff",750,700)
+  tiff(filename="results/effectPlot.tiff",750,700)
   par(mfrow=c(2,3),cex=1.3,cex.lab=1.2)
   #normal
   for (i in find.pheno(data,effpPhen)) {
@@ -470,7 +468,7 @@ mergedIntp<-function(x=1,bin=F,sc=scan1,perm=scan1perm,rit.inx=NULL,mf=c(2,3),l=
 }
 #normal
 if(ask("Press <RETURN> to plot interactionplot to tiff file")==""){
-  tiff("interaction plot%d.tiff",750,700)
+  tiff("results/interaction plot%d.tiff",750,700)
   x<-(1:6)[1:6%in%find.pheno(data,intpPhen)]
   mergedIntp(x,rit.inx=c(3,6,8,12,15,21,22,26,35))
   x<-(7:11)[7:11%in%find.pheno(data,intpPhen)]
@@ -514,7 +512,7 @@ thr2df<-do.call(rbind.data.frame,c(c.thr2,make.row.names=F))
 thr<-rbind(thr1df,thr2df)
 #sc2thr1+2.hk+em10
 if(ask("Press <RETURN> to save qtl pairs to csv file")==""){
-  write.csv(thr,"qtlpairs.csv")
+  write.csv(thr,"results/qtlpairs.csv")
 }
 
 ####addpair+PVE####
@@ -572,5 +570,8 @@ qtlpairsdf<-c(qtlpairsdf,thr=m[qtlpairsdf[,1],])
 
 #sc2thr1+2.hk+em10.ap.hk
 if(ask("Press <RETURN> to save added qtl pairs to csv file")==""){
-  write.csv(qtlpairsdf,"qtlpairs.ap.Alp0.2.csv")
+  write.csv(qtlpairsdf,"results/qtlpairs.ap.Alp0.2.csv")
 }
+rm(scan2,scan2.bin)
+save.image()
+
