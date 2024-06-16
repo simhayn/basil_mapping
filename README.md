@@ -34,7 +34,7 @@ This project was conducted as part of my master's thesis at Bar Ilan University.
 The repository includes separate scripts for genetic mapping and QTL analysis. Here are the main steps:
 
 1. **Data Preprocessing:**
-    - Data preprocessing was performed in Excel, resulting in the creation of the `bdenovo.csv` file, which contains the processed data ready for analysis. 
+    - Data preprocessing was performed in Excel, resulting in the creation of the `raw_data.csv` file, which contains the processed data ready for analysis. 
 
 2. **Genetic Mapping:**
     - Perform genetic mapping using the `genetic_mapping.R` script.
@@ -48,8 +48,14 @@ The repository includes separate scripts for genetic mapping and QTL analysis. H
     source("scripts/qtl_analysis.R")
     ```
 
+4. **Visualize Linkage Map:**
+    - Plot linkage map with the detected QTLs using the `linkage_map_view.R` script.
+    ```r
+    source("scripts/linkage_map_view.R")
+    ```
+
 ## Data
-The data used in this project include genotypic and phenotypic datasets for basil. These datasets are stored in the `data` directory. Ensure you have the appropriate permissions and rights to use the data if it is not publicly available.
+The fictive data used in this project include genotypic and phenotypic datasets for basil. These datasets are stored in the `data` directory. 
 
 ## Contributing
 I welcome contributions to this project! If you have suggestions, bug reports, or improvements, please open an issue or submit a pull request.
