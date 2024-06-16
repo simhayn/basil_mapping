@@ -10,8 +10,8 @@
 rm(list = ls())
 #install and load packages
 {
-  pkg<-c("qtl", "ASMap", "dplyr", "corrplot", "tidyr")
-  sapply(pkg, function(pkg) if (!requireNamespace(pkg, quietly = T)) { install.packages(pkg) })
+  pkg<-c("qtl", "ASMap", "dplyr", "corrplot")
+  sapply(pkg,\(pkg){if(!requireNamespace(pkg)) install.packages(pkg)})
   sapply(pkg,library, character.only = T)
 }
 # Load the data
@@ -35,7 +35,7 @@ data<-read.cross("csv",".","data.csv",map.function="kosambi",genotypes = c("A","
   parents <- data.frame(rbind(matrix(0,12,9), matrix(5,12,9)),faudpc_values, Cold = cold_values,row.names = c(paste0("P1_", 1:12), paste0("DP_", 1:12)))
   # Define the AFF/S/L columns
   p <-c(5, 4.5, 4.5, 4.5, 4.5, 3.5, 4, 4.5, 4, 4.5, 4, 4)
-  parents[13:24,1:3] <-matrix(p,24,3)
+  parents[13:24,1:3] <-matrix(p,12,3)
   # Assign column names
   colnames(parents) <-phenames(data)[1:n]
   #remove temporary items
@@ -162,6 +162,8 @@ if (all(file.exists("genome_scans.Rdata","scan2_part1.Rdata","scan2_lod_part2.Rd
     operm <- vector("list", 100)
     for(i in 1:100){operm[[i]]<-scanone(data,pheno.col=c(12:13),method="em",model="binary",n.perm=10,n.cluster=2)}
     scan1perm.bin1<-do.call("rbind", operm)
+    
+    save(scan1,scan1.bin,scan1perm,scan1perm.bin,scan2.bin,scan2perm,scan2perm.bin,file="genome_scans.Rdata")
     
     ###ScanTwo###
     #normal #scan genome for Two-QTL model
@@ -572,6 +574,6 @@ qtlpairsdf<-c(qtlpairsdf,thr=m[qtlpairsdf[,1],])
 if(ask("Press <RETURN> to save added qtl pairs to csv file")==""){
   write.csv(qtlpairsdf,"results/qtlpairs.ap.Alp0.2.csv")
 }
-rm(scan2,scan2.bin)
-save.image()
+#rm(scan2,scan2.bin);save.image()
+save(s.aq,out.aq.bin,file = "aq.Rdata")
 

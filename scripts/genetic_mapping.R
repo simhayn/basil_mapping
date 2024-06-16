@@ -1,9 +1,7 @@
 #*****************************
 #Genetic map construction of basil
-#(BA17 Bc5F3 44-4-3 x Deep Purple)F2 population 
+#F2 population 
 #Using r/qtl and r/asmap packages 
-#SNP's from Lara
-#GBS sequenced by Genewiz
 #Nataly Yakobov
 #*****************************
 #       R=0       S=1      for FOB BDM 
@@ -17,7 +15,7 @@ rm(list=ls())
 sapply(c("qtl", "ASMap"), function(pkg) if (!requireNamespace(pkg, quietly = T)) { install.packages(pkg); library(pkg, character.only = T) })
 
 #import genotypic data #warning message: long chromosomes. It is ok cause all markers are on 1 chr 
-data<-read.cross("csvr",".","bdenovo.csv",genotypes=c("a","h","b"),map.function="kosambi")
+data<-read.cross("csvr",".","raw_data.csv",genotypes=c("a","h","b"),map.function="kosambi")
 
 #convert cross to bcsft type f2
 data<-convert2bcsft(data,F.gen=2,estimate.map=F)
@@ -172,4 +170,4 @@ if(ask("Press <RETURN> to plot LOD over rf to tiff file, it takes a long time")=
 }
 #save map as csv file 
 cat("\nsaving cross 'data10' to csv file\n")
-write.cross(data10,"csv")
+write.cross(data10)
