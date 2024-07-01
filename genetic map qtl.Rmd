@@ -1,8 +1,6 @@
 ---
 title: "Genetic Mapping and QTL Analysis"
-output:
-  html_document:
-    df_print: paged
+output: html_notebook
 ---
 
 <img src="https://octodex.github.com/images/labtocat.png" width="200" height="200"/>
@@ -668,7 +666,7 @@ mergedIntp(x[2],T,scan1.bin,scan1perm.bin,LETTERs=F)
 
 QTL pairs summary
 
-```{r include=FALSE}
+```{r}
 #normal
 c.thr1<-list()
 for(i in 1:n){
@@ -695,7 +693,7 @@ for (i in 1:length(c.thr2)){
   }
 }
 thr2df<-do.call(rbind.data.frame,c(c.thr2,make.row.names=F))
-(thr<-rbind(thr1df,thr2df))
+thr<-rbind(thr1df,thr2df)
 ```
 
 QTL pairs
