@@ -1,6 +1,8 @@
 ---
 title: "Genetic Mapping and QTL Analysis"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 <img src="https://octodex.github.com/images/labtocat.png" width="200" height="200"/>
@@ -51,9 +53,9 @@ Plot the number of genotyped markers per individual as well as the number of gen
 
 ```{r}
 par(mfrow=c(1,2), las=1)
-plot(ntyped(data1), ylim=c(0,totmar(data1)+50),ylab="No. typed markers",main="Typed Markers by Individual")
+plot(ntyped(data1), ylim=c(0,totmar(data1)+50),ylab="No. typed markers",main="Markers by Individual")
 mtext("A",adj=0)
-plot(ntyped(data1, "mar"), ylim=c(0,(nind(data1)+15)),ylab="No. typed individuals",main="Typed Individuals by Marker")
+plot(ntyped(data1, "mar"), ylim=c(0,(nind(data1)+15)),ylab="No. typed individuals",main="Individuals by Marker")
 mtext("B",adj=0)
 ```
 
@@ -164,7 +166,7 @@ cat(totmar(data8)-totmar(data7),"mar pushed for co. located")
 
 Re-construct final map by adding markers to existing LGs (linkage groups)
 
-```{r}
+```{r include=FALSE}
 data9<-mstmap(data8,anchor=T,p.value=2,id='index')
 ```
 
@@ -188,11 +190,6 @@ Plot genetic map illustration, final map
 
 ```{r}
 plot.map(data10,alternate.chrid=T)
-```
-
-```{r}
-knitr::opts_chunk$set(fig.width=8, fig.height=6, message=FALSE)
-iplotMap(data10)
 ```
 
 LGs summary table
@@ -430,7 +427,7 @@ for(i in 1:n){
   }
 }
 #binary #add QTL
-(qtlist.bin<-summary(scan1.bin,perms=scan1perm.bin,format="tabByCol",alpha=0.63,ci.function="bayesint"))
+qtlist.bin<-summary(scan1.bin,perms=scan1perm.bin,format="tabByCol",alpha=0.63,ci.function="bayesint")
 data<-calc.genoprob(data,3,map.function="kosambi")
 out.aq.bin<-list();rqtl.bin<-list()
 for(i in 1:2){
