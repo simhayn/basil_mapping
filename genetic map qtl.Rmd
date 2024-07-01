@@ -658,6 +658,9 @@ Plot marker interactions
 data<-sim.geno(data,step=3)
 x<-(1:6)[1:6%in%find.pheno(data,intpPhen)]
 mergedIntp(x,rit.inx=c(3,6,8,12,15,21,22,26,35))
+```
+
+```{r eval=FALSE, include=FALSE}
 x<-(7:11)[7:11%in%find.pheno(data,intpPhen)]
 mergedIntp(x,first=T,rit.inx=1,mf=c(2,2))
 #binary
