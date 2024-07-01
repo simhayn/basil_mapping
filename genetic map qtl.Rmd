@@ -1,6 +1,6 @@
 ---
 title: "Genetic Mapping and QTL Analysis"
-output: html_notebook
+output: github_document
 ---
 
 <img src="https://octodex.github.com/images/labtocat.png" width="200" height="200"/>
