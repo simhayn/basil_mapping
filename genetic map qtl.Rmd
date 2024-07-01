@@ -128,7 +128,7 @@ plotMap(data5,alternate.chrid = T)
 
 Profile individuals' genotype statistics
 
-```{r}
+```{r include=FALSE}
 pg<-profileGen(data5,bychr=F,stat.type=c("xo","dxo","miss"),id="index",xo.lambda=20,layout=c(1,3),lty=2,cex=0.7)
 pg<-profileGen(data5,bychr=F,stat.type=c("xo","dxo","miss"),id="index",xo.lambda=median(pg$stat$xo),layout=c(1,3),lty=2,cex=0.8)
 ```
@@ -671,7 +671,7 @@ mergedIntp(x[2],T,scan1.bin,scan1perm.bin,LETTERs=F)
 
 QTL pairs summary
 
-```{r}
+```{r include=FALSE}
 #normal
 c.thr1<-list()
 for(i in 1:n){
